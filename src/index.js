@@ -1,15 +1,18 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+//By Gtd232
+
+import template from './template.html';
 
 export default {
-	async fetch(request, env, ctx) {
-		return new Response('Hello World!');
-	},
+  async fetch(request, env) {
+    let value = {}
+    const keys = await env.STATUS_INFO.list();
+    for (const key of keys) {
+      value[key] = await env.STATUS_INFO.get(key);
+    }
+
+    return new Response(template.replace("$DATA", JSON.stringify(value)), {
+        headers: { 'Content-Type': 'text/html' }
+    });
+  }
 };
+
