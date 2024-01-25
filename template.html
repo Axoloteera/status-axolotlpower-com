@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AxolotlPower Status</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+        .visible {
+            visibility: visible;
+        }
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+    <script src="./main.js"></script>
+    <script>
+        const data = $DATA;
+    </script>
+</head>
+<body style="background-color: cornflowerblue">
+<h1>AxolotlPower Status</h1>
+<noscript>
+    <h2>JavaScript is disabled</h2>
+    <p>Please enable JavaScript to view this page.</p>
+</noscript>
+
+<h2 class="visible" if="h-tip">Please Wait......</h2>
+
+<h2 style="color: green" class="hidden" id="srv-o">All systems operational</h2>
+<h2 style="color: orange" class="hidden" id="srv-d">Some systems down</h2>
+<p id="p-ud"></p>
+<div id="div-c">
+</div>
+
+</body>
+</html>
