@@ -49,3 +49,10 @@ compatibility_date = "2024-01-17"
 # [[migrations]]
 # tag = "v1"
 # new_classes = ["MyDurableObject"]
+
+[placement]
+mode = "smart"
+
+[[kv_namespaces]]
+binding = "STATUS_INFO"
+id = "b9054efdd25d46cfb8bc8b805f9816c0"

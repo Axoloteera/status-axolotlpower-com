@@ -6,9 +6,11 @@ export default {
   async fetch(request, env) {
     let value = {}
     const keys = await env.STATUS_INFO.list();
-    for (const key of keys) {
-      value[key] = await env.STATUS_INFO.get(key);
+    //console.log(keys);
+    for (const key of keys["keys"]) {
+      value[key.name] = await env.STATUS_INFO.get(key.name);
     }
+    //console.log(value);
 
     return new Response(template.replace("$DATA", JSON.stringify(value)), {
         headers: { 'Content-Type': 'text/html' }
