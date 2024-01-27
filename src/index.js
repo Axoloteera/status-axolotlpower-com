@@ -3,7 +3,7 @@
 import template from './template.html';
 
 export default {
-	async fetch(env) {
+	async fetch(requests, env) {
 		let value = {};
 		const keys = await env.STATUS_INFO.list();
 		//console.log(keys);
