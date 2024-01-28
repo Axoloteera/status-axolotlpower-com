@@ -2,6 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>AxolotlPower Status</title>
 		<style>
 			body {
@@ -21,23 +22,39 @@
 				visibility: hidden;
 			}
 		</style>
-		<script src="./main.js"></script>
 		<script>
+            window.onload = () =>{
 			const data = $DATA;
+            var allStatus = true;
+            var container = document.getElementById("div-c");  
+            for (var i in data) {
+                if (data[i] == "1") {
+                    container.innerHTML += "<h2><font color=\"black\">" + i + "</font><font color=\"green\">&emsp;~Up </font></h2>";
+                } else {
+                    container.innerHTML += "<h2><font color=\"black\">" + i + "</font><font color=\"red\">&emsp;~Down </font></h2>";
+                    allStatus = false;
+                }
+            }
+            if (allStatus) {
+                document.getElementById("srv-o").classList.remove("hidden");
+                document.getElementById("srv-o").classList.add("visible");
+            } else {
+                document.getElementById("srv-d").classList.remove("hidden");
+                document.getElementById("srv-d").classList.add("visible");
+            }
+        }
 		</script>
 	</head>
-	<body style="background-color: cornflowerblue">
+	<body>
 		<h1>AxolotlPower Status</h1>
 		<noscript>
 			<h2>JavaScript is disabled</h2>
 			<p>Please enable JavaScript to view this page.</p>
 		</noscript>
-
 		<h2 class="visible" if="h-tip">Please Wait......</h2>
-
 		<h2 style="color: green" class="hidden" id="srv-o">All systems operational</h2>
 		<h2 style="color: orange" class="hidden" id="srv-d">Some systems down</h2>
-		<p id="p-ud"></p>
+		<p id="p-ud">$NOTICE</p>
 		<div id="div-c"></div>
 	</body>
 </html>
