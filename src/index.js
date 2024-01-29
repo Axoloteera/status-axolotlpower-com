@@ -1,6 +1,8 @@
 //By Gtd232
 
 import template from './template.html';
+import mcs from 'node-mcstatus';
+
 
 export default {
 	async fetch(requests, env) {
@@ -17,4 +19,9 @@ export default {
 			headers: { 'Content-Type': 'text/html' },
 		});
 	},
+
+  async scheduled(event, env, ctx) {
+    const config = JSON.parse(await env.STATUS_INFO.get('CONFIG'));
+    console.log(config);
+  }
 };
